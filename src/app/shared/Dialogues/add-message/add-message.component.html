@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Add message</h1>
+<div mat-dialog-content >
+  <mat-form-field appearance="fill" class="d-block">
+    <label for="subject">subject:</label>
+    <input #subject id="subject" matInput >
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="d-block"  >
+    <label for="messageContent">Message:</label>
+    <textarea #messageContent id="messageContent" matInput rows="10"></textarea>
+  </mat-form-field>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="false" style="background-color:rgba(251,171,24,255);" (click) = "addMessage({subject:subject.value, messageContent: messageContent.value})" cdkFocusInitial>Add</button>
+</div>
+

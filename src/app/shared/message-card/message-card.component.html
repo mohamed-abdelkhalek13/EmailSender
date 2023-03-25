@@ -1,0 +1,9 @@
+<div *ngFor="let message of Messages" class="card m-2">
+  <h5 class="card-header">{{message.subject}}</h5>
+  <div class="card-body">
+    <p class="card-text">{{message.messageContent}}</p>
+    <a routerLink="/{{message.id}}" class="btn btn-primary">Send message</a>
+    <a class="btn btn-danger ms-2" (click)="DeleteMessage(message)">Delete message</a>
+  </div>
+</div>
+

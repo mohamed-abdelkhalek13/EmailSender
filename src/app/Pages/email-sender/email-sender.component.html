@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Send message</h1>
+<div *ngIf="emailSent === 'sent'" class="alert alert-primary" role="alert">
+  Email sent successfully
+</div>
+<div *ngIf="emailSent === 'error'" class="alert alert-danger">error ocurred while sending, pls check your data and try again</div>
+<form [formGroup]="emailForm" mat-dialog-content >
+  <mat-form-field appearance="fill" class="d-block">
+    <label for="email">Email: </label>
+    <input  #email id="email" type="text" value="multiple" formControlName="email" matInput placeholder="email1@gmail.com email2@gmail.com email3@gmail.com">
+  </mat-form-field>
+  <div *ngIf="emailValidation" class="alert alert-danger">Email is invalid</div>
+
+  <mat-form-field appearance="fill" class="d-block">
+  <label for="subject">Subject: </label>
+    <input #subject id="subject" type="text" formControlName="subject" matInput  [(ngModel)]="message.subject">
+  </mat-form-field>
+  <div *ngIf="subjectValidation" class="alert alert-danger">Subject is required</div>
+
+  <mat-form-field appearance="fill" class="d-block"  >
+    <label for="body">Body: </label>
+    <textarea #body id="body" formControlName="body" matInput rows="10" [(ngModel)]="message.messageContent"></textarea>
+  </mat-form-field>
+  <div *ngIf="bodyValidation" class="alert alert-danger">Body is required</div>
+
+  <a class="btn btn-primary" (click) = "sendMessage({emails: email.value, subject: subject.value, body:body.value})">Send Message</a>
+</form>
+
